@@ -9,11 +9,13 @@ var VideoListView = Backbone.View.extend({
   render: function() {
     this.$el.children().detach();
     this.$el.html(this.template());
-
+   
     //$('.list').replaceWith(this.template());
 
-    this.$el.find('.video-list').empty();
-    this.collection.forEach(this.renderVideoEntry, this);
+    // this.$el.find('.video-list').empty();
+    this.$('.video-list').empty();
+    
+    this.collection.forEach(this.renderVideoEntry);
     
     return this;
   },
@@ -27,7 +29,7 @@ var VideoListView = Backbone.View.extend({
   // },
 
   renderVideoEntry: function(video) {
-    var videoListEntry = new VideoListEntryView({el: $('.video-list'), model: video});
+    var videoListEntry = new VideoListEntryView({model: video});
     // this.$el.find('.video-list').append(videoListEntry.render());
     $('.video-list').append(videoListEntry.render());
   },
