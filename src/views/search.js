@@ -1,10 +1,8 @@
 var SearchView = Backbone.View.extend({
 
-  ENTER_KEY: 13,
-
   events: {
     'click .btn': 'handleClick',
-    'keyup': 'handleEnter'
+    'keyup': 'dynamicSearch'
   },
 
   render: function() {
@@ -19,9 +17,9 @@ var SearchView = Backbone.View.extend({
     }
   },
 
-  handleEnter: function(event) {
+  dynamicSearch: function(event) {
     var searchQuery = this.$('.form-control').val();
-    if (searchQuery && event.which === this.ENTER_KEY) {
+    if (searchQuery && event.which) {
       this.collection.fetch(searchQuery);
     }
   },
