@@ -10,7 +10,10 @@ var SearchView = Backbone.View.extend({
   },
 
   handleClick: function() {
-    this.collection.fetch();
+    var searchQuery = this.$('.form-control').val();
+    if (searchQuery) {
+      this.collection.fetch(searchQuery);
+    }
   },
 
   template: templateURL('src/templates/search.html')
